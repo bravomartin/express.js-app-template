@@ -1,0 +1,21 @@
+{
+	"jsDir": "public/js", // This is a relative path to where your JS files live
+	"cssDir": "public/css", // This is a relative path to where your CSS files live
+	"sourceDir": "src", // This is the name of the dir inside jsDir and cssDir where your source files will live.
+	"buildDir": "", // This is the name of the dir inside jsDir and cssDir where your built files will live.
+	"bundles": { // List each bundle in here like so...
+		"script.js": [
+			"libs/jquery-1.7.1.js",
+			"libs/jquery-ui-1.8.18.custom.min.js",
+			"libs/modernizr-2.5.3.js",
+			"script.js"
+
+		],
+		"style.css": [
+			"libs/grid.less",
+			"libs/bootstrap.less",
+			"libs/boilerplate.less",
+			"style.less"
+		]
+	}
+}

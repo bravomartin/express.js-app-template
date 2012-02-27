@@ -1,0 +1,114 @@
+
+
+// Colors //
+
+        @white: rgba(255, 255, 255, 1);
+		@grey: #cbcbcb;
+        @black: rgba(0, 0, 0, 1);
+		@main: #ff6600;
+		@selected:@white;
+		@placeholder: darken(@selected, 40%);
+		
+// Font //
+        @font: 'Helvetica', arial, 'Droid Sans', sans-serif;
+        @sans: @font;
+        @serif: Garamond, Times, 'Times New Roman', 'Droid Serif', serif;
+        @smaller: 11px;
+        @small: 12px;
+        @medium: 18px;
+        @large: 40px;
+
+
+
+
+//////////
+// GRID //
+//////////
+
+// Specify the number of columns and set column and gutter widths
+@columns: 12;
+@column-width: 60;
+@gutter-width: 20;
+
+// Remove the definition below for a pixel-based layout
+@total-width: 100%;
+
+
+////////////
+// GENERAL//
+////////////
+
+body {
+	height:100%;
+	margin:0;
+	bottom:0;
+}
+
+a {
+	text-decoration:none;
+	color:@grey;
+	&:hover{
+		color:@white;
+		text-decoration:none;
+	}
+	&:active {
+		color:@main;
+		text-decoration:none;
+	}
+	}
+
+
+
+////////////
+// LAYOUT //
+////////////
+
+// header
+header#top {
+	.column(12);
+	border-top: 1px solid white;
+	margin-bottom: 2em;
+	margin-top: 1em;
+	h1 {
+		float: left;
+	}
+	nav {
+		font-size:@small;
+		float: right;
+	}
+}
+
+// main column & sidebar
+#maincolumn {
+	.column(9);
+	background-color: @main;
+}
+#sidebar {
+	.column(3);
+	background-color: @main;
+}
+
+@media screen and (max-width: 720px) {
+	#maincolumn,
+	#sidebar {
+		.column(12);
+		margin-bottom: 1em;
+	}
+}
+
+
+#footer {
+	.column(12);
+	margin-top: 1em;
+	border-top:1px solid @white;
+	padding-top:.5em;
+	
+}
+
+@media screen and (max-width: 720px) {
+	#maincolumn,
+	#sidebar {
+		.column(12);
+		margin-bottom: 1em;
+	}
+}

@@ -1,0 +1,11 @@
+{
+    "name": "grandstand"
+  , "version": "0.0.5"
+  , "private": true
+  , "dependencies": {
+      "express": "2.5.5"
+    , "less": ">= 0.0.1"
+    , "ejs": ">= 0.0.1"
+		, "connect-auth": ">=0.4.1"
+  }
+}
