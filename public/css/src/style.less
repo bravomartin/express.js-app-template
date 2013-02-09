@@ -34,9 +34,21 @@
 @total-width: 100%;
 
 
+.border(@thickness : 3px, @color : @main) {
+	border-shadow:@thickness @main;
+	-moz-border-shadow:thickness @main;
+	-border-shadow:@thickness @main;
+	
+}
+
 ////////////
 // GENERAL//
 ////////////
+
+
+.red {
+	background:red!important;
+}
 
 body {
 	height:100%;
@@ -54,6 +66,7 @@ a {
 	&:active {
 		color:@main;
 		text-decoration:none;
+		.border(3px solid white);
 	}
 	}
 

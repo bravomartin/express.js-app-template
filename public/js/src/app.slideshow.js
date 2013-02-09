@@ -37,15 +37,11 @@
 				
 			},
 			'changeColor' : function(){
-				//change color
+				$(this).toggleClass('red');
 
 			}
 			
-			
-			
-			
-			
-			
+	
 
 		}
 	};

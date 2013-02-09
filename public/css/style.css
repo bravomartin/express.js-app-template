@@ -524,6 +524,9 @@ http://blueprintcss.lighthouseapp.com/projects/15318/tickets/5-extra-margin-padd
     page-break-after: avoid;
   }
 }
+.red {
+  background: red!important;
+}
 body {
   height: 100%;
   margin: 0;
@@ -540,6 +543,9 @@ a:hover {
 a:active {
   color: #ff6600;
   text-decoration: none;
+  border-shadow: 3px solid #ffffff #ff6600;
+  -moz-border-shadow: thickness #ff6600;
+  -border-shadow: 3px solid #ffffff #ff6600;
 }
 header#top {
   display: inline;

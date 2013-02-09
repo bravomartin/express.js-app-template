@@ -1,6 +1,6 @@
 {
-    "name": "grandstand"
-  , "version": "0.0.5"
+    "name": "express-temlpate-app"
+  , "version": "0.1"
   , "private": true
   , "dependencies": {
       "express": "2.5.5"

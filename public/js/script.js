@@ -10889,60 +10889,55 @@ window.Modernizr = (function( window, document, undefined ) {
 
 })(this, this.document);
 
- /* 	
-GRANDSTAND
-The Barbarian Group
-*/
+var APP = ( function (app, $) {
 
-var GS = ( function (gs, $) {
-
-	gs.modules = gs.modules || {};
+	app.modules = app.modules || {};
 	
 	// global setting variables go here
-	gs.settings = {
+	app.settings = {
 			initialized: false
 		};
 	
-	gs.evt = {
+	app.evt = {
 			'ready': function( evt ) {
-				if ( 'app' in gs ) {
-					gs.app.run();
+				if ( 'app' in app ) {
+					app.app.run();
 				}
-			}	
+			}
 	};
-	gs.fn = {
+	app.fn = {
 		'init': function(){
-			if ( gs.settings.initialized ) return false;
+			if ( app.settings.initialized ) return false;
 			// bindings
 			$( window )
-				.unbind( 'keydown.gs keypress.gs keyup.gs' ) //unbinding for safety.
-				.bind( 'keydown.gs keypress.gs keyup.gs', function( e ) {
+				.unbind( 'keydown.app keypress.app keyup.app' ) //unbinding for safety.
+				.bind( 'keydown.app keypress.app keyup.app', function( e ) {
 					
-					return gs.fn.trigger( e.type, e );
+					return app.fn.trigger( e.type, e );
 				} );
 			// if we've got the throttle plugin, use it
 			if ( 'throttle' in $ ) {
 				$( window )
-					.unbind( 'resize.gs' )
-					.bind( 'resize.gs', $.throttle( 100, function( e ) {
-						return gs.fn.trigger( e.type, e );
+					.unbind( 'resize.app' )
+					.bind( 'resize.app', $.throttle( 100, function( e ) {
+						return app.fn.trigger( e.type, e );
 					} ) )
-					.trigger( 'resize.gs' );
+					.trigger( 'resize.app' );
 			} else {
 				$( window )
-					.unbind( 'resize.gs' )
-					.bind( 'resize.gs', function( e ) {
-						gs.fn.set('windowWidth', $( window ).width( ) );
-						gs.fn.set('windowHeight', $( window ).height( ) );
+					.unbind( 'resize.app' )
+					.bind( 'resize.app', function( e ) {
+						app.fn.set('windowWidth', $( window ).width( ) );
+						app.fn.set('windowHeight', $( window ).height( ) );
 						
-						return gs.fn.trigger( e.type, e );
+						return app.fn.trigger( e.type, e );
 					} )
-					.trigger( 'resize.gs' );
+					.trigger( 'resize.app' );
 			}
 			$( document )
-				.unbind( 'ready.gs' )
-				.bind( 'ready.gs', function( e ) {
-					return gs.fn.trigger( e.type, e );
+				.unbind( 'ready.app' )
+				.bind( 'ready.app', function( e ) {
+					return app.fn.trigger( e.type, e );
 				} );
 				
 			// attempt to set our base url based on where this script lives
@@ -10950,15 +10945,15 @@ var GS = ( function (gs, $) {
 			var baseSrc = "/"; // default to nada
 			$( 'script[src^="/"]' ).each( function() {
 				$script = $( this );
-				if( $script.attr( 'src' ).match( /^\/{1}[a-zA-Z0-9]+/ ) && 
+				if( $script.attr( 'src' ).match( /^\/{1}[a-zA-Z0-9]+/ ) &&
 					$script.attr( 'src' ).match( /^.*?(?=js\/[a-zA-Z0-9\_\-]+\.js)/ ) ) {
 					baseSrc = $script.attr( 'src' ).match( /^.*?(?=js\/[a-zA-Z0-9\_\-]+\.js)/ )[0];
 				}
 			} );
-			gs.fn.set( 'base_url', baseSrc );
+			app.fn.set( 'base_url', baseSrc );
 			// load modules
 
-			gs.settings.initialized = true;
+			app.settings.initialized = true;
 
 		},
 		'trigger': function( eventName, eventObj, args ) {
@@ -10967,29 +10962,29 @@ var GS = ( function (gs, $) {
 				eventObj = { 'type': 'custom' };
 
 			// trigger the global handlers first
-			if ( eventName in gs.evt ) {
+			if ( eventName in app.evt ) {
 				// if it returns false, stop the train
-				if ( gs.evt[eventName]( eventObj ) === false ) {
+				if ( app.evt[eventName]( eventObj ) === false ) {
 					return false;
 				}
 			}
 			// run the event handler on each module that's got it
-			for( var module in gs.modules ) {
-				if( module in gs.modules && 'evt' in gs.modules[module] && eventName in gs.modules[module].evt ) {
-					gs.modules[module].evt[eventName]( eventObj, args );
+			for( var module in app.modules ) {
+				if( module in app.modules && 'evt' in app.modules[module] && eventName in app.modules[module].evt ) {
+					app.modules[module].evt[eventName]( eventObj, args );
 				}
 			}
 		},
-		// Adds a variable to the GS global settings
+		// Adds a variable to the APP global settings
 		'set': function( key, value ) {
-			gs.settings[key] = value;
+			app.settings[key] = value;
 			return value;
 		},
-		// returns a variable from the GS global settings
+		// returns a variable from the APP global settings
 		// defaults to the key if the variable can't be found
 		'get': function( key ) {
-			if( key in gs.settings ) {
-				return gs.settings[key];
+			if( key in app.settings ) {
+				return app.settings[key];
 			} else {
 				return key;
 			}
@@ -10999,11 +10994,11 @@ var GS = ( function (gs, $) {
 	};
 	
 	
-	gs.fn.init();
+	app.fn.init();
 	
 	
-	return gs;
-}(GS || {}, jQuery));
+	return app;
+}(APP || {}, jQuery));
 
 
 
@@ -11049,15 +11044,11 @@ var GS = ( function (gs, $) {
 				
 			},
 			'changeColor' : function(){
-				//change color
+				$(this).toggleClass('red');
 
 			}
 			
-			
-			
-			
-			
-			
+	
 
 		}
 	};
